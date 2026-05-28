@@ -6,7 +6,7 @@ import { resolveAssetPath } from '../utils/assets';
 const ProfileCard = ({ profile, align = 'left' }) => {
   return (
     <motion.article
-      className="relative overflow-hidden rounded-[2.3rem] border border-champagne/80 bg-white/62 p-5 shadow-card backdrop-blur sm:p-6"
+      className="relative overflow-hidden rounded-[2.3rem] border border-champagne/80 bg-white/70 p-5 shadow-card sm:p-6"
       initial={{ opacity: 0, y: 42, rotate: align === 'left' ? -1.5 : 1.5 }}
       whileInView={{ opacity: 1, y: 0, rotate: 0 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -16,11 +16,17 @@ const ProfileCard = ({ profile, align = 'left' }) => {
       <div className="grid gap-5 sm:grid-cols-[0.88fr_1fr] sm:items-center">
         <motion.div
           className="relative overflow-hidden rounded-[1.8rem] bg-porcelain shadow-sm"
-          whileInView={{ scale: [0.96, 1], filter: ['blur(8px)', 'blur(0px)'] }}
+          whileInView={{ scale: [0.98, 1] }}
           viewport={{ once: true }}
-          transition={{ duration: 0.85, delay: 0.1 }}
+          transition={{ duration: 0.55, delay: 0.1 }}
         >
-          <img src={resolveAssetPath(profile.image)} alt={profile.name} loading="lazy" className="h-80 w-full object-cover sm:h-[420px]" />
+          <img
+            src={resolveAssetPath(profile.image)}
+            alt={profile.name}
+            loading="lazy"
+            decoding="async"
+            className="h-80 w-full object-cover sm:h-[420px]"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/24 via-transparent to-white/12" />
         </motion.div>
 
@@ -66,7 +72,7 @@ const CoupleInfoSection = ({ couple }) => {
         </div>
 
         <motion.div
-          className="mx-auto mt-10 flex max-w-md items-center justify-center gap-3 rounded-full border border-roseblue/40 bg-white/60 px-5 py-3 text-center text-sm text-ink/60 shadow-sm backdrop-blur"
+          className="mx-auto mt-10 flex max-w-md items-center justify-center gap-3 rounded-full border border-roseblue/40 bg-white/70 px-5 py-3 text-center text-sm text-ink/60 shadow-sm"
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
         >

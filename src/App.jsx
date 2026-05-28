@@ -15,10 +15,12 @@ import GiftSection from './sections/GiftSection';
 import Footer from './sections/Footer';
 import { weddingData } from './data/weddingData';
 import { useMusicPlayer } from './hooks/useMusicPlayer';
+import { preloadImages } from './utils/assets';
 import { formatShortDate } from './utils/date';
 
 const App = () => {
-  const [isOpened, setIsOpened] = useState(false);
+  const [hasOpened, setHasOpened] = useState(false);
+  const [isIntroVisible, setIsIntroVisible] = useState(true);
   const { isPlaying, playRandomTrack, toggle } = useMusicPlayer(weddingData.musicList);
 
   useEffect(() => {
@@ -35,19 +37,36 @@ const App = () => {
     ogDescription?.setAttribute('content', weddingData.shortMessage);
   }, []);
 
+  useEffect(() => {
+    preloadImages(
+      [
+        weddingData.coverImage,
+        weddingData.heroImage,
+        '/images/blue-rose.webp',
+        weddingData.couple.groom.image,
+        weddingData.couple.bride.image,
+        weddingData.location.previewImage,
+        weddingData.bankInfo.qrImage,
+        ...weddingData.album.map((image) => image.src),
+      ],
+      { concurrency: 2 },
+    );
+  }, []);
+
   const handleOpenStart = () => {
+    setHasOpened(true);
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'auto' }));
     playRandomTrack();
   };
 
   const handleOpenComplete = () => {
-    setIsOpened(true);
-    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    setIsIntroVisible(false);
   };
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-paper text-ink">
       <AnimatePresence mode="wait">
-        {!isOpened && (
+        {isIntroVisible && (
           <EnvelopeIntro
             key="envelope"
             data={weddingData}
@@ -57,30 +76,29 @@ const App = () => {
         )}
       </AnimatePresence>
 
-      {isOpened && <BackgroundRoses />}
+      {hasOpened && <BackgroundRoses />}
 
-      {isOpened && (
-        <motion.main
-          key="main-content"
-          initial={{ opacity: 0, filter: 'blur(12px)' }}
-          animate={{ opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-10"
-        >
-          <HeroSection data={weddingData} />
-          <InvitationDialogSection data={weddingData} />
-          <CoupleInfoSection couple={weddingData.couple} />
-          <AlbumSection album={weddingData.album} />
-          <ScheduleSection data={weddingData} />
-          <LocationSection location={weddingData.location} />
-          <GiftSection bankInfo={weddingData.bankInfo} />
-          <Footer data={weddingData} />
-        </motion.main>
-      )}
+      <motion.main
+        key="main-content"
+        aria-hidden={!hasOpened}
+        initial={false}
+        animate={{ opacity: hasOpened ? 1 : 0 }}
+        transition={{ duration: hasOpened ? 0.9 : 0, ease: [0.22, 1, 0.36, 1] }}
+        className={`relative z-10 ${hasOpened ? '' : 'pointer-events-none select-none'}`}
+      >
+        <HeroSection data={weddingData} />
+        <InvitationDialogSection data={weddingData} />
+        <CoupleInfoSection couple={weddingData.couple} />
+        <AlbumSection album={weddingData.album} />
+        <ScheduleSection data={weddingData} />
+        <LocationSection location={weddingData.location} />
+        <GiftSection bankInfo={weddingData.bankInfo} />
+        <Footer data={weddingData} />
+      </motion.main>
 
-      {isOpened && <MusicControl isPlaying={isPlaying} onToggle={toggle} />}
-      {isOpened && <FloatingOrnaments />}
-      {isOpened && <FallingPetals />}
+      {hasOpened && <MusicControl isPlaying={isPlaying} onToggle={toggle} />}
+      {hasOpened && <FloatingOrnaments />}
+      {hasOpened && <FallingPetals />}
     </div>
   );
 };

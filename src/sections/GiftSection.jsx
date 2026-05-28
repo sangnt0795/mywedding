@@ -29,7 +29,13 @@ const GiftSection = ({ bankInfo }) => {
             className="group justify-self-start rounded-[1.6rem] border border-roseblue/40 bg-porcelain p-3 shadow-sm transition hover:-translate-y-1 sm:justify-self-end"
           >
             <div className="relative h-32 w-32 overflow-hidden rounded-[1.1rem] bg-white sm:h-36 sm:w-36">
-              <img src={resolveAssetPath(bankInfo.qrImage)} alt="QR mừng cưới" loading="lazy" className="h-full w-full object-cover" />
+              <img
+                src={resolveAssetPath(bankInfo.qrImage)}
+                alt="QR mừng cưới"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
               <div className="absolute inset-0 flex items-center justify-center bg-ink/0 text-white opacity-0 transition group-hover:bg-ink/28 group-hover:opacity-100">
                 <FiMaximize2 className="text-2xl" />
               </div>
@@ -80,7 +86,12 @@ const GiftSection = ({ bankInfo }) => {
               >
                 <FiX />
               </button>
-              <img src={resolveAssetPath(bankInfo.qrImage)} alt="QR mừng cưới phóng to" className="w-full rounded-[1.4rem] bg-white" />
+              <img
+                src={resolveAssetPath(bankInfo.qrImage)}
+                alt="QR mừng cưới phóng to"
+                decoding="async"
+                className="w-full rounded-[1.4rem] bg-white"
+              />
               <p className="mt-4 text-center text-sm text-ink/60">{bankInfo.bankName} · {bankInfo.accountName}</p>
             </motion.div>
           </motion.div>

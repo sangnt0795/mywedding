@@ -26,8 +26,10 @@ const EnvelopeIntro = ({ data, onOpenStart, onOpenComplete }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex min-h-[100svh] items-center justify-center overflow-hidden bg-paper px-4 py-5 text-ink sm:min-h-screen sm:px-5 sm:py-8"
-      exit={{ opacity: 0, scale: 1.02, filter: 'blur(18px)' }}
+      className={`fixed inset-0 z-50 flex min-h-[100svh] items-center justify-center overflow-hidden bg-paper px-4 py-5 text-ink sm:min-h-screen sm:px-5 sm:py-8 ${
+        isOpening ? 'pointer-events-none' : ''
+      }`}
+      exit={{ opacity: 0, scale: 1.02 }}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
     >
       <motion.div

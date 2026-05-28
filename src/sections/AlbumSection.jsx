@@ -22,13 +22,12 @@ const gridVariants = {
 };
 
 const imageVariants = {
-  hidden: { opacity: 0, y: 34, scale: 0.96, filter: 'blur(10px)' },
+  hidden: { opacity: 0, y: 28, scale: 0.98 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    filter: 'blur(0px)',
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -69,6 +68,7 @@ const AlbumSection = ({ album }) => {
                 src={resolveAssetPath(image.src)}
                 alt={image.alt}
                 loading="lazy"
+                decoding="async"
                 className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/38 via-transparent to-white/12 opacity-80 transition group-hover:opacity-95" />

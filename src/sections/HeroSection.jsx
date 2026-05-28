@@ -30,8 +30,8 @@ const HeroSection = ({ data }) => {
 
       <motion.div
         className="relative mx-auto w-full max-w-5xl text-center"
-        initial={{ opacity: 0, y: 36, filter: 'blur(12px)' }}
-        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="mx-auto mb-8 inline-flex items-center gap-3 rounded-full border border-white/80 bg-white/45 px-5 py-2 text-xs uppercase tracking-[0.28em] text-ink/65 shadow-sm backdrop-blur-md">

@@ -34,6 +34,7 @@ const ImageLightbox = ({ images, activeIndex, onClose, onChange }) => {
             <img
               src={resolveAssetPath(activeImage.src)}
               alt={activeImage.alt}
+              decoding="async"
               className="max-h-[74vh] w-full rounded-[1.4rem] object-cover"
             />
             <p className="px-2 py-4 text-center text-sm text-ink/65">{activeImage.alt}</p>

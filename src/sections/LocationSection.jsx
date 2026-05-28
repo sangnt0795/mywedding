@@ -50,7 +50,13 @@ const LocationSection = ({ location }) => {
                 className="h-full min-h-[340px] w-full"
               />
             ) : (
-              <img src={resolveAssetPath(location.previewImage)} alt={location.name} className="h-full min-h-[340px] w-full object-cover" loading="lazy" />
+              <img
+                src={resolveAssetPath(location.previewImage)}
+                alt={location.name}
+                className="h-full min-h-[340px] w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
             )}
           </div>
         </div>

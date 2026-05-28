@@ -9,7 +9,7 @@ const InvitationDialogSection = ({ data }) => {
     <SectionReveal className="px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
         <motion.div
-          className="relative order-2 overflow-hidden rounded-[2.4rem] border border-white/80 bg-white/55 p-3 shadow-soft backdrop-blur lg:order-1"
+          className="relative order-2 overflow-hidden rounded-[2.4rem] border border-white/80 bg-white/55 p-3 shadow-soft lg:order-1"
           initial={{ opacity: 0, rotate: -2, y: 48 }}
           whileInView={{ opacity: 1, rotate: 0, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
@@ -20,10 +20,11 @@ const InvitationDialogSection = ({ data }) => {
             src={resolveAssetPath(data.album[0].src)}
             alt={data.album[0].alt}
             loading="lazy"
+            decoding="async"
             className="relative h-[430px] w-full rounded-[2rem] object-cover sm:h-[560px]"
           />
           <motion.div
-            className="absolute bottom-8 left-8 right-8 rounded-[1.7rem] border border-white/70 bg-porcelain/80 p-5 text-center shadow-card backdrop-blur-md"
+            className="absolute bottom-8 left-8 right-8 rounded-[1.7rem] border border-white/70 bg-porcelain/90 p-5 text-center shadow-card"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -35,7 +36,7 @@ const InvitationDialogSection = ({ data }) => {
         </motion.div>
 
         <div className="order-1 text-center lg:order-2">
-          <div className="mx-auto inline-flex items-center gap-3 rounded-full border border-roseblue/35 bg-white/65 px-5 py-2 text-xs uppercase tracking-[0.28em] text-ink/55 shadow-sm backdrop-blur">
+          <div className="mx-auto inline-flex items-center gap-3 rounded-full border border-roseblue/35 bg-white/75 px-5 py-2 text-xs uppercase tracking-[0.28em] text-ink/55 shadow-sm">
             <FiMail className="text-sageblue" />
             A little note
           </div>
@@ -44,8 +45,8 @@ const InvitationDialogSection = ({ data }) => {
               <motion.p
                 key={line}
                 className="font-display text-[2rem] leading-tight text-ink sm:text-[2.65rem]"
-                initial={{ opacity: 0, y: 22, filter: 'blur(8px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.7 }}
                 transition={{ duration: 0.65, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
