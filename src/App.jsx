@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import EnvelopeIntro from './components/EnvelopeIntro';
 import MusicControl from './components/MusicControl';
@@ -14,14 +14,20 @@ import LocationSection from './sections/LocationSection';
 import GiftSection from './sections/GiftSection';
 import Footer from './sections/Footer';
 import { weddingData } from './data/weddingData';
+import { useMediaQuery } from './hooks/useMediaQuery';
 import { useMusicPlayer } from './hooks/useMusicPlayer';
+import { usePageVisibility } from './hooks/usePageVisibility';
 import { preloadImages } from './utils/assets';
 import { formatShortDate } from './utils/date';
 
 const App = () => {
   const [hasOpened, setHasOpened] = useState(false);
   const [isIntroVisible, setIsIntroVisible] = useState(true);
+  const wasHiddenAfterOpenRef = useRef(false);
+  const isMobile = useMediaQuery('(max-width: 767px)');
+  const isPageVisible = usePageVisibility();
   const { isPlaying, playRandomTrack, toggle } = useMusicPlayer(weddingData.musicList);
+  const shouldRenderDecorations = hasOpened && isPageVisible && !isMobile;
 
   useEffect(() => {
     const title = `${weddingData.groomName} & ${weddingData.brideName} | ${formatShortDate(weddingData.weddingDate)}`;
@@ -53,6 +59,20 @@ const App = () => {
     );
   }, []);
 
+  useEffect(() => {
+    if (!hasOpened) return;
+
+    if (!isPageVisible) {
+      wasHiddenAfterOpenRef.current = true;
+      return;
+    }
+
+    if (wasHiddenAfterOpenRef.current) {
+      setIsIntroVisible(false);
+      wasHiddenAfterOpenRef.current = false;
+    }
+  }, [hasOpened, isPageVisible]);
+
   const handleOpenStart = () => {
     setHasOpened(true);
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'auto' }));
@@ -76,7 +96,7 @@ const App = () => {
         )}
       </AnimatePresence>
 
-      {hasOpened && <BackgroundRoses />}
+      {hasOpened && !isMobile && <BackgroundRoses />}
 
       <motion.main
         key="main-content"
@@ -91,14 +111,14 @@ const App = () => {
         <CoupleInfoSection couple={weddingData.couple} />
         <AlbumSection album={weddingData.album} />
         <ScheduleSection data={weddingData} />
-        <LocationSection location={weddingData.location} />
+        <LocationSection location={weddingData.location} preferStaticMap={isMobile} />
         <GiftSection bankInfo={weddingData.bankInfo} />
         <Footer data={weddingData} />
       </motion.main>
 
-      {hasOpened && <MusicControl isPlaying={isPlaying} onToggle={toggle} />}
-      {hasOpened && <FloatingOrnaments />}
-      {hasOpened && <FallingPetals />}
+      {hasOpened && <MusicControl isPlaying={isPlaying} onToggle={toggle} disablePulse={isMobile || !isPageVisible} />}
+      {shouldRenderDecorations && <FloatingOrnaments />}
+      {shouldRenderDecorations && <FallingPetals />}
     </div>
   );
 };

@@ -10,7 +10,7 @@ const GiftSection = ({ bankInfo }) => {
 
   return (
     <SectionReveal className="px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
-      <div className="mx-auto max-w-4xl rounded-[2.4rem] border border-champagne/80 bg-white/60 p-6 shadow-card backdrop-blur sm:p-9">
+      <div className="mx-auto max-w-4xl rounded-[2.4rem] border border-champagne/80 bg-white/70 p-6 shadow-card sm:p-9">
         <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-center">
           <div>
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-mist/55 text-sageblue">

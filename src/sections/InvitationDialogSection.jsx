@@ -2,16 +2,19 @@ import { motion } from 'framer-motion';
 import { FiHeart, FiMail } from 'react-icons/fi';
 import SectionReveal from '../components/SectionReveal';
 import CoupleNames from '../components/CoupleNames';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { resolveAssetPath } from '../utils/assets';
 
 const InvitationDialogSection = ({ data }) => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
+
   return (
     <SectionReveal className="px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
         <motion.div
           className="relative order-2 overflow-hidden rounded-[2.4rem] border border-white/80 bg-white/55 p-3 shadow-soft lg:order-1"
-          initial={{ opacity: 0, rotate: -2, y: 48 }}
-          whileInView={{ opacity: 1, rotate: 0, y: 0 }}
+          initial={isMobile ? false : { opacity: 0, rotate: -2, y: 48 }}
+          whileInView={isMobile ? undefined : { opacity: 1, rotate: 0, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -25,8 +28,8 @@ const InvitationDialogSection = ({ data }) => {
           />
           <motion.div
             className="absolute bottom-8 left-8 right-8 rounded-[1.7rem] border border-white/70 bg-porcelain/90 p-5 text-center shadow-card"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? false : { opacity: 0, y: 28 }}
+            whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.25 }}
           >
@@ -45,8 +48,8 @@ const InvitationDialogSection = ({ data }) => {
               <motion.p
                 key={line}
                 className="font-display text-[2rem] leading-tight text-ink sm:text-[2.65rem]"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={isMobile ? false : { opacity: 0, y: 20 }}
+                whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.7 }}
                 transition={{ duration: 0.65, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
@@ -56,8 +59,8 @@ const InvitationDialogSection = ({ data }) => {
           </div>
           <motion.div
             className="mx-auto mt-10 flex h-14 w-14 items-center justify-center rounded-full bg-mist/60 text-sageblue shadow-glow"
-            animate={{ scale: [1, 1.08, 1], rotate: [0, 5, 0] }}
-            transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+            animate={isMobile ? undefined : { scale: [1, 1.08, 1], rotate: [0, 5, 0] }}
+            transition={isMobile ? undefined : { duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
           >
             <FiHeart className="text-xl" />
           </motion.div>

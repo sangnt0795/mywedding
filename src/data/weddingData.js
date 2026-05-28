@@ -34,7 +34,7 @@ export const weddingData = {
       parents: 'Con ông Nguyễn Văn Thanh và bà Trần Thị Lan',
       description:
         'Một người điềm tĩnh, ấm áp và luôn tin rằng hạnh phúc được tạo nên từ những điều giản dị mỗi ngày.',
-      image: '/images/album/chure.png',
+      image: '/images/album/chure.jpg',
     },
     bride: {
       label: 'THE BRIDE',
@@ -44,7 +44,7 @@ export const weddingData = {
       parents: 'Con ông Phan Văn Hùng và bà Nguyễn Thị Kim Phượng',
       description:
         'Một cô gái yêu sắc xanh dịu nhẹ, thích những bông hoa thanh tao và luôn trân trọng từng khoảnh khắc bên người thương.',
-      image: '/images/album/codau.png',
+      image: '/images/album/codau.jpg',
     },
   },
 
@@ -61,32 +61,32 @@ export const weddingData = {
 
   album: [
     {
-      src: '/images/album/album-01.png',
+      src: '/images/album/album-01.jpg',
       // alt: 'Ảnh cưới ngoài trời với hoa xanh pastel',
       span: 'tall',
     },
     {
-      src: '/images/album/album-02.png',
+      src: '/images/album/album-02.jpg',
       // alt: 'Khoảnh khắc cô dâu chú rể nắm tay',
       span: 'wide',
     },
     {
-      src: '/images/album/album-03.png',
+      src: '/images/album/album-03.jpg',
       // alt: 'Thiệp cưới và nhẫn cưới phong cách Hàn Quốc',
       span: 'normal',
     },
     {
-      src: '/images/album/album-04.png',
+      src: '/images/album/album-04.jpg',
       // alt: 'Cặp đôi dưới ánh nắng mềm',
       span: 'normal',
     },
     {
-      src: '/images/album/album-05.png',
+      src: '/images/album/album-05.jpg',
       // alt: 'Bó hoa cưới xanh hoa hồng nhẹ',
       span: 'tall',
     },
     {
-      src: '/images/album/album-06.png',
+      src: '/images/album/album-06.jpg',
       // alt: 'Bàn tiệc cưới tone xanh nhạt và trắng ngà',
       span: 'wide',
     },

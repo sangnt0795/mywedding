@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { FiCalendar, FiClock, FiExternalLink, FiHeart, FiMapPin } from 'react-icons/fi';
 import SectionReveal from '../components/SectionReveal';
 import CoupleNames from '../components/CoupleNames';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useCountdown } from '../hooks/useCountdown';
 import { createGoogleCalendarUrl, formatShortDate, formatWeddingDate, getWeddingDateTime } from '../utils/date';
 
@@ -31,6 +32,7 @@ const CountdownItem = ({ value, label }) => (
 );
 
 const ScheduleSection = ({ data }) => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
   const countdown = useCountdown(data.weddingDate, data.ceremonyTime);
   const weddingDate = getWeddingDateTime(data.weddingDate);
   const calendarDays = buildCalendarDays(data.weddingDate);
@@ -60,7 +62,7 @@ const ScheduleSection = ({ data }) => {
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-stretch">
-          <div className="relative overflow-hidden rounded-[2.2rem] border border-champagne/80 bg-white/62 p-7 shadow-card backdrop-blur sm:p-9">
+          <div className="relative overflow-hidden rounded-[2.2rem] border border-champagne/80 bg-white/70 p-7 shadow-card sm:p-9">
             <div className="absolute -right-16 -top-20 h-52 w-52 rounded-full bg-mist/40 blur-3xl" />
             <div className="relative">
               <div className="grid grid-cols-3 gap-3 text-center">
@@ -106,7 +108,7 @@ const ScheduleSection = ({ data }) => {
           </div>
 
           <div className="grid gap-5">
-            <div className="rounded-[2.2rem] border border-champagne/80 bg-white/55 p-5 shadow-card backdrop-blur sm:p-7">
+            <div className="rounded-[2.2rem] border border-champagne/80 bg-white/65 p-5 shadow-card sm:p-7">
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.32em] text-sageblue">Calendar</p>
@@ -124,8 +126,8 @@ const ScheduleSection = ({ data }) => {
                 {calendarDays.map((item, index) => (
                   <motion.div
                     key={item.key}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={isMobile ? false : { opacity: 0, y: 12 }}
+                    whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.35, delay: index * 0.012 }}
                     className={item.empty ? 'aspect-square' : 'relative flex aspect-square items-center justify-center rounded-2xl bg-porcelain text-sm text-ink/68 shadow-sm'}
@@ -144,7 +146,7 @@ const ScheduleSection = ({ data }) => {
 
             <div className="grid gap-4 sm:grid-cols-2">
               {data.schedule.map((item) => (
-                <article key={item.label} className="rounded-[2rem] border border-white/70 bg-white/60 p-6 shadow-card backdrop-blur">
+                <article key={item.label} className="rounded-[2rem] border border-white/70 bg-white/70 p-6 shadow-card">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-mist/55 text-sageblue">
                     <FiClock />
                   </div>
@@ -155,7 +157,7 @@ const ScheduleSection = ({ data }) => {
               ))}
             </div>
 
-            <div className="rounded-[2rem] border border-roseblue/35 bg-white/60 p-6 shadow-card backdrop-blur">
+            <div className="rounded-[2rem] border border-roseblue/35 bg-white/70 p-6 shadow-card">
               <div className="flex items-start gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-mist/55 text-sageblue">
                   <FiMapPin />

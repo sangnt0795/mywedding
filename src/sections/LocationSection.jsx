@@ -2,10 +2,10 @@ import { FiMapPin, FiNavigation, FiExternalLink } from 'react-icons/fi';
 import SectionReveal from '../components/SectionReveal';
 import { resolveAssetPath } from '../utils/assets';
 
-const LocationSection = ({ location }) => {
+const LocationSection = ({ location, preferStaticMap = false }) => {
   return (
     <SectionReveal className="px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
-      <div className="mx-auto max-w-6xl overflow-hidden rounded-[2.4rem] border border-champagne/80 bg-white/62 shadow-soft backdrop-blur">
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-[2.4rem] border border-champagne/80 bg-white/72 shadow-soft">
         <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
           <div className="relative p-7 sm:p-10">
             <div className="absolute -left-20 top-10 h-48 w-48 rounded-full bg-blush/42 blur-3xl" />
@@ -41,7 +41,7 @@ const LocationSection = ({ location }) => {
           </div>
 
           <div className="min-h-[340px] border-t border-champagne/70 bg-porcelain lg:border-l lg:border-t-0">
-            {location.mapEmbed ? (
+            {location.mapEmbed && !preferStaticMap ? (
               <iframe
                 title={location.name}
                 src={location.mapEmbed}

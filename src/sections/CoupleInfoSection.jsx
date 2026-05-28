@@ -1,14 +1,17 @@
 import { motion } from 'framer-motion';
 import { FiHeart, FiHome, FiUser } from 'react-icons/fi';
 import SectionReveal from '../components/SectionReveal';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { resolveAssetPath } from '../utils/assets';
 
 const ProfileCard = ({ profile, align = 'left' }) => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
+
   return (
     <motion.article
       className="relative overflow-hidden rounded-[2.3rem] border border-champagne/80 bg-white/70 p-5 shadow-card sm:p-6"
-      initial={{ opacity: 0, y: 42, rotate: align === 'left' ? -1.5 : 1.5 }}
-      whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+      initial={isMobile ? false : { opacity: 0, y: 42, rotate: align === 'left' ? -1.5 : 1.5 }}
+      whileInView={isMobile ? undefined : { opacity: 1, y: 0, rotate: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
     >
@@ -16,7 +19,7 @@ const ProfileCard = ({ profile, align = 'left' }) => {
       <div className="grid gap-5 sm:grid-cols-[0.88fr_1fr] sm:items-center">
         <motion.div
           className="relative overflow-hidden rounded-[1.8rem] bg-porcelain shadow-sm"
-          whileInView={{ scale: [0.98, 1] }}
+          whileInView={isMobile ? undefined : { scale: [0.98, 1] }}
           viewport={{ once: true }}
           transition={{ duration: 0.55, delay: 0.1 }}
         >
@@ -55,6 +58,8 @@ const ProfileCard = ({ profile, align = 'left' }) => {
 };
 
 const CoupleInfoSection = ({ couple }) => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
+
   return (
     <SectionReveal className="px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
       <div className="mx-auto max-w-6xl">
@@ -73,8 +78,8 @@ const CoupleInfoSection = ({ couple }) => {
 
         <motion.div
           className="mx-auto mt-10 flex max-w-md items-center justify-center gap-3 rounded-full border border-roseblue/40 bg-white/70 px-5 py-3 text-center text-sm text-ink/60 shadow-sm"
-          animate={{ y: [0, -6, 0] }}
-          transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
+          animate={isMobile ? undefined : { y: [0, -6, 0] }}
+          transition={isMobile ? undefined : { duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
         >
           <FiHeart className="shrink-0 text-sageblue" />
           Đúng người, đúng thời điểm, đúng một đời bên nhau.

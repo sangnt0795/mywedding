@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import SectionReveal from '../components/SectionReveal';
 import ImageLightbox from '../components/ImageLightbox';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { resolveAssetPath } from '../utils/assets';
 
 const spanClass = {
@@ -33,6 +34,7 @@ const imageVariants = {
 
 const AlbumSection = ({ album }) => {
   const [activeIndex, setActiveIndex] = useState(-1);
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
   return (
     <SectionReveal className="px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
@@ -47,9 +49,9 @@ const AlbumSection = ({ album }) => {
 
         <motion.div
           className="mt-12 grid auto-rows-[260px] grid-cols-1 gap-4 sm:grid-cols-4 sm:gap-5"
-          variants={gridVariants}
-          initial="hidden"
-          whileInView="visible"
+          variants={isMobile ? undefined : gridVariants}
+          initial={isMobile ? false : 'hidden'}
+          whileInView={isMobile ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.18 }}
         >
           {album.map((image, index) => (
@@ -57,8 +59,8 @@ const AlbumSection = ({ album }) => {
               key={image.src}
               type="button"
               onClick={() => setActiveIndex(index)}
-              variants={imageVariants}
-              whileHover={{ y: -6 }}
+              variants={isMobile ? undefined : imageVariants}
+              whileHover={isMobile ? undefined : { y: -6 }}
               className={clsx(
                 'group relative overflow-hidden rounded-[1.8rem] border border-white/70 bg-white/50 text-left shadow-card',
                 spanClass[image.span] || spanClass.normal,

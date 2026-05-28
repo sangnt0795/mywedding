@@ -5,7 +5,7 @@ import { formatShortDate } from '../utils/date';
 const Footer = ({ data }) => {
   return (
     <SectionReveal as="footer" className="px-5 pb-12 pt-10 text-center sm:px-8">
-      <div className="mx-auto max-w-3xl rounded-[2.4rem] border border-champagne/80 bg-white/55 px-6 py-12 shadow-card backdrop-blur">
+      <div className="mx-auto max-w-3xl rounded-[2.4rem] border border-champagne/80 bg-white/70 px-6 py-12 shadow-card">
         <p className="text-xs uppercase tracking-[0.32em] text-sageblue">Thank you</p>
         <h2 className="mt-5 overflow-visible">
           <CoupleNames brideName={data.brideName} groomName={data.groomName} size="section" />
