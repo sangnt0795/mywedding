@@ -8,8 +8,7 @@ export const weddingData = {
   coverImage: '/images/opening-cover.svg',
   heroImage: '/images/hero.svg',
   invitationText: 'Trân trọng kính mời',
-  shortMessage:
-    'Sự hiện diện của bạn là niềm vui và lời chúc phúc ý nghĩa nhất trong ngày trọng đại của chúng tôi.',
+  shortMessage: 'Mời đến đám cưới Tấn Sang & Tường Vy.',
 
   family: {
     groom: 'Gia đình nhà trai',
