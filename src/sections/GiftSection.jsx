@@ -9,7 +9,7 @@ const GiftSection = ({ bankInfo }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <SectionReveal className="px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
+    <SectionReveal className="px-5 py-12 sm:px-8 lg:px-14 lg:py-16">
       <div className="mx-auto max-w-4xl rounded-[2.4rem] border border-champagne/80 bg-white/70 p-6 shadow-card sm:p-9">
         <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-center">
           <div>
@@ -19,7 +19,7 @@ const GiftSection = ({ bankInfo }) => {
             <p className="mt-5 text-xs uppercase tracking-[0.32em] text-sageblue">Wedding Gift</p>
             <h2 className="mt-4 font-display text-5xl leading-none text-ink sm:text-6xl">Mừng cưới</h2>
             <p className="mt-5 max-w-xl text-sm leading-7 text-ink/62">
-              Nếu bạn muốn gửi lời chúc qua chuyển khoản, thông tin được đặt nhỏ gọn tại đây để không ảnh hưởng bố cục thiệp.
+              Một lời chúc nhỏ cũng đủ làm ngày vui thêm trọn vẹn; thông tin chuyển khoản được đặt gọn bên dưới nếu bạn cần.
             </p>
           </div>
 
@@ -43,18 +43,18 @@ const GiftSection = ({ bankInfo }) => {
           </button>
         </div>
 
-        <div className="mt-7 grid gap-3 rounded-[1.8rem] bg-porcelain p-5 text-sm text-ink/70 sm:grid-cols-3">
-          <div>
-            <p className="text-[0.65rem] uppercase tracking-[0.22em] text-ink/42">Ngân hàng</p>
-            <p className="mt-1 font-medium text-ink">{bankInfo.bankName}</p>
+        <div className="mt-7 grid gap-4 rounded-[1.8rem] bg-porcelain p-5 text-sm text-ink/70 lg:grid-cols-[0.85fr_1fr_auto] lg:items-center">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <p className="shrink-0 text-[0.65rem] uppercase tracking-[0.22em] text-ink/42">Ngân hàng</p>
+            <p className="font-medium text-ink">{bankInfo.bankName}</p>
           </div>
-          <div>
-            <p className="text-[0.65rem] uppercase tracking-[0.22em] text-ink/42">Chủ tài khoản</p>
-            <p className="mt-1 font-medium text-ink">{bankInfo.accountName}</p>
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <p className="shrink-0 text-[0.65rem] uppercase tracking-[0.22em] text-ink/42">Chủ tài khoản</p>
+            <p className="font-medium text-ink">{bankInfo.accountName}</p>
           </div>
-          <div className="sm:text-right">
-            <p className="text-[0.65rem] uppercase tracking-[0.22em] text-ink/42">Số tài khoản</p>
-            <div className="mt-2 grid grid-cols-[1fr_auto] items-center gap-2 rounded-full border border-roseblue/35 bg-white/60 py-1.5 pl-4 pr-1.5">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 lg:justify-end">
+            <p className="shrink-0 text-[0.65rem] uppercase tracking-[0.22em] text-ink/42">Số tài khoản</p>
+            <div className="grid grid-cols-[1fr_auto] items-center gap-2 rounded-full border border-roseblue/35 bg-white/60 py-1.5 pl-4 pr-1.5">
               <p className="min-w-0 text-center font-semibold tracking-[0.08em] text-ink sm:text-left">{bankInfo.accountNumber}</p>
               <CopyButton value={bankInfo.accountNumber} label="Sao chép" />
             </div>

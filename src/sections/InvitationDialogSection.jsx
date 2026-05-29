@@ -9,7 +9,7 @@ const InvitationDialogSection = ({ data }) => {
   const isMobile = useMediaQuery('(max-width: 767px)');
 
   return (
-    <SectionReveal className="px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
+    <SectionReveal className="px-5 py-12 sm:px-8 lg:px-14 lg:py-16">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
         <motion.div
           className="relative order-2 overflow-hidden rounded-[2.4rem] border border-white/80 bg-white/55 p-3 shadow-soft lg:order-1"
@@ -43,7 +43,7 @@ const InvitationDialogSection = ({ data }) => {
             <FiMail className="text-sageblue" />
             A little note
           </div>
-          <div className="mt-8 space-y-3">
+          <div className="mt-6 space-y-3">
             {data.dialogue.map((line, index) => (
               <motion.p
                 key={line}
@@ -58,7 +58,7 @@ const InvitationDialogSection = ({ data }) => {
             ))}
           </div>
           <motion.div
-            className="mx-auto mt-10 flex h-14 w-14 items-center justify-center rounded-full bg-mist/60 text-sageblue shadow-glow"
+            className="mx-auto mt-8 flex h-14 w-14 items-center justify-center rounded-full bg-mist/60 text-sageblue shadow-glow"
             animate={isMobile ? undefined : { scale: [1, 1.08, 1], rotate: [0, 5, 0] }}
             transition={isMobile ? undefined : { duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
           >

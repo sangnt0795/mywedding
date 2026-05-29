@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Thiệp cưới Tấn Sang và Tường Vy</title>
+  <desc id="desc">Ảnh xem trước khi chia sẻ thiệp cưới</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#fbfeff"/>
+      <stop offset=".48" stop-color="#eef9fd"/>
+      <stop offset="1" stop-color="#e5f5fb"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" x2="1" y1="0" y2="0">
+      <stop stop-color="#7fa6b8" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#7fa6b8" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#7fa6b8" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="26" flood-color="#345c70" flood-opacity=".14"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <circle cx="110" cy="70" r="210" fill="#ffffff" opacity=".48"/>
+  <circle cx="1040" cy="555" r="250" fill="#dff3fb" opacity=".38"/>
+  <path d="M-40 180C230 138 384 172 622 90c194-67 326-96 618-66" fill="none" stroke="#b9deee" stroke-width="5" opacity=".28"/>
+  <path d="M-20 465C202 420 400 433 618 345c213-86 362-108 642-76" fill="none" stroke="#b9deee" stroke-width="5" opacity=".2"/>
+
+  <g transform="translate(82 56)" filter="url(#softShadow)">
+    <rect width="1036" height="518" rx="52" fill="#fbfeff" opacity=".88"/>
+    <rect x="18" y="18" width="1000" height="482" rx="42" fill="none" stroke="#d7ecf4" stroke-width="2.4"/>
+  </g>
+
+  <g transform="translate(175 114)" fill="none" stroke="#7fa6b8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 330C158 230 344 170 852 48" stroke-width="2.6" opacity=".35"/>
+    <path d="M156 250c-30-20-58-20-84-2 25 22 53 23 84 2Z" stroke-width="2" opacity=".32"/>
+    <path d="M240 215c-7-43 8-75 44-95 12 39-1 72-44 95Z" stroke-width="2" opacity=".32"/>
+    <path d="M380 168c-38-18-74-14-106 11 35 22 70 18 106-11Z" stroke-width="2" opacity=".28"/>
+    <path d="M518 132c1-40 21-68 58-82 5 38-14 65-58 82Z" stroke-width="2" opacity=".28"/>
+    <path d="M684 91c-36-13-70-8-101 15 34 20 68 15 101-15Z" stroke-width="2" opacity=".26"/>
+    <circle cx="206" cy="230" r="6" stroke-width="1.7" opacity=".25"/>
+    <circle cx="602" cy="112" r="5" stroke-width="1.7" opacity=".24"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="600" y="162" font-family="Be Vietnam Pro, Arial, sans-serif" font-size="25" letter-spacing="12" fill="#5f91a5">TRÂN TRỌNG KÍNH MỜI</text>
+    <text x="600" y="300" font-family="Cormorant Garamond, Georgia, serif" font-size="116" fill="#243844">Tấn Sang</text>
+    <text x="600" y="382" font-family="Cormorant Garamond, Georgia, serif" font-size="72" fill="#7fa6b8">&amp; Tường Vy</text>
+    <rect x="310" y="420" width="580" height="2" rx="1" fill="url(#shine)"/>
+    <text x="600" y="472" font-family="Be Vietnam Pro, Arial, sans-serif" font-size="31" letter-spacing="8" fill="#6e7f89">CHỦ NHẬT, 18/10/2026</text>
+    <text x="600" y="522" font-family="Be Vietnam Pro, Arial, sans-serif" font-size="25" fill="#6e7f89">Mời bạn đến chung vui trong ngày hạnh phúc của chúng mình.</text>
+  </g>
+
+  <g transform="translate(949 112)" fill="#dff3fb" stroke="#5f91a5" stroke-width="2.4" opacity=".9">
+    <path d="M46 82S8 60 8 31C8 18 18 10 30 10c8 0 13 4 16 10 4-6 9-10 17-10 12 0 22 8 22 21 0 29-39 51-39 51Z"/>
+    <path d="M22 54c16-4 32-4 48 0" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

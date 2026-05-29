@@ -18,7 +18,7 @@ const ProfileCard = ({ profile, align = 'left' }) => {
       <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-mist/35 blur-3xl" />
       <div className="grid gap-5 sm:grid-cols-[0.88fr_1fr] sm:items-center">
         <motion.div
-          className="relative overflow-hidden rounded-[1.8rem] bg-porcelain shadow-sm"
+          className="relative aspect-[3/4] overflow-hidden rounded-[1.8rem] bg-porcelain shadow-sm sm:aspect-auto"
           whileInView={isMobile ? undefined : { scale: [0.98, 1] }}
           viewport={{ once: true }}
           transition={{ duration: 0.55, delay: 0.1 }}
@@ -28,7 +28,7 @@ const ProfileCard = ({ profile, align = 'left' }) => {
             alt={profile.name}
             loading="lazy"
             decoding="async"
-            className="h-80 w-full object-cover sm:h-[420px]"
+            className="h-full w-full object-cover sm:h-[420px]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/24 via-transparent to-white/12" />
         </motion.div>
@@ -61,23 +61,23 @@ const CoupleInfoSection = ({ couple }) => {
   const isMobile = useMediaQuery('(max-width: 767px)');
 
   return (
-    <SectionReveal className="px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
+    <SectionReveal className="px-5 py-12 sm:px-8 lg:px-14 lg:py-16">
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs uppercase tracking-[0.32em] text-sageblue">The Bride & The Groom</p>
           <h2 className="mt-4 font-display text-5xl leading-none text-ink sm:text-7xl">Thông tin cô dâu chú rể</h2>
-          <p className="mt-6 text-sm leading-7 text-ink/62 sm:text-base sm:leading-8">
+          <p className="mt-4 text-sm leading-7 text-ink/62 sm:text-base sm:leading-8">
             Hai gia đình trân trọng báo tin vui và kính mời bạn đến chung vui trong ngày hạnh phúc.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div className="mt-9 grid gap-6 lg:grid-cols-2">
           <ProfileCard profile={couple.groom} align="left" />
           <ProfileCard profile={couple.bride} align="right" />
         </div>
 
         <motion.div
-          className="mx-auto mt-10 flex max-w-md items-center justify-center gap-3 rounded-full border border-roseblue/40 bg-white/70 px-5 py-3 text-center text-sm text-ink/60 shadow-sm"
+          className="mx-auto mt-8 flex max-w-md items-center justify-center gap-3 rounded-full border border-roseblue/40 bg-white/70 px-5 py-3 text-center text-sm text-ink/60 shadow-sm"
           animate={isMobile ? undefined : { y: [0, -6, 0] }}
           transition={isMobile ? undefined : { duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
         >

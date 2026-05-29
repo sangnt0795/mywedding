@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 560" role="img" aria-labelledby="title">
+  <title id="title">Rose corner line art</title>
+  <g fill="none" stroke="#7fa6b8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M454 516C388 411 303 334 174 284" stroke-width="2" opacity=".58"/>
+    <path d="M179 284c36 5 71-8 96-36-42-11-77 1-96 36Z" stroke-width="1.8" opacity=".5"/>
+    <path d="M251 333c35-13 56-38 64-75-40 8-61 33-64 75Z" stroke-width="1.8" opacity=".5"/>
+    <path d="M329 396c26-20 39-48 38-82-35 17-48 44-38 82Z" stroke-width="1.8" opacity=".46"/>
+    <path d="M380 442c31 1 56-11 75-36-33-8-58 5-75 36Z" stroke-width="1.8" opacity=".46"/>
+    <path d="M136 251c-25-37-14-81 25-101 42-21 94 2 103 49 10 53-44 94-91 68" stroke-width="1.9" opacity=".58"/>
+    <path d="M158 222c2-31 27-53 59-48 28 5 48 30 43 59" stroke-width="1.45" opacity=".46"/>
+    <path d="M178 242c-4-21 10-41 31-46 21-4 39 9 45 28" stroke-width="1.45" opacity=".43"/>
+    <path d="M191 260c12-15 29-23 50-22" stroke-width="1.35" opacity=".38"/>
+    <path d="M111 277c-43 6-74 30-94 72 45 3 78-21 94-72Z" stroke-width="1.8" opacity=".45"/>
+    <path d="M92 210c-43-5-79 8-109 40 43 15 80 2 109-40Z" stroke-width="1.8" opacity=".45"/>
+    <path d="M462 518c15 13 32 19 52 18" stroke-width="1.3" opacity=".36"/>
+    <path d="M428 481c13 25 32 42 58 51" stroke-width="1.3" opacity=".34"/>
+  </g>
+</svg>

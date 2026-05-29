@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FiCalendar, FiHeart } from 'react-icons/fi';
 import CoupleNames from '../components/CoupleNames';
 import { useMediaQuery } from '../hooks/useMediaQuery';
@@ -14,24 +15,43 @@ const CountdownItem = ({ value, label }) => (
 );
 
 const HeroSection = ({ data }) => {
+  const sectionRef = useRef(null);
   const isMobile = useMediaQuery('(max-width: 767px)');
   const countdown = useCountdown(data.weddingDate, data.ceremonyTime);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, 72]);
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden px-5 py-24 text-ink sm:px-8 lg:px-14">
+    <section ref={sectionRef} className="relative flex min-h-[82svh] items-start overflow-hidden px-5 pb-10 pt-16 text-ink sm:min-h-[92svh] sm:px-8 sm:pb-16 sm:pt-20 lg:px-14">
       <motion.div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${resolveAssetPath(data.heroImage)})` }}
-        initial={isMobile ? false : { scale: 1.06 }}
-        animate={isMobile ? undefined : { scale: 1.14 }}
-        transition={isMobile ? undefined : { duration: 18, ease: 'easeOut' }}
-      />
+        className="absolute inset-x-0 -bottom-16 -top-16"
+        style={{ y: isMobile ? 0 : backgroundY }}
+      >
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${resolveAssetPath(data.heroImage)})` }}
+          initial={isMobile ? false : { scale: 1.06 }}
+          animate={isMobile ? undefined : { scale: 1.14 }}
+          transition={isMobile ? undefined : { duration: 18, ease: 'easeOut' }}
+        />
+      </motion.div>
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(251,254,255,0.76),rgba(238,249,253,0.92)_58%,rgba(251,254,255,0.98))]" />
       <div className="absolute left-0 top-0 h-64 w-64 rounded-full bg-mist/45 blur-3xl" />
       <div className="absolute bottom-12 right-0 h-72 w-72 rounded-full bg-blush/55 blur-3xl" />
+      <img
+        src={resolveAssetPath('/images/decor/floral-line-01-botanical-arc.svg')}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-6 left-1/2 z-0 w-[78vw] max-w-[560px] -translate-x-1/2 opacity-[0.14] sm:bottom-16 sm:w-[54vw]"
+        loading="lazy"
+        decoding="async"
+      />
 
       <motion.div
-        className="relative mx-auto w-full max-w-5xl text-center"
+        className="relative z-10 mx-auto w-full max-w-5xl text-center"
         initial={isMobile ? false : { opacity: 0, y: 28 }}
         animate={isMobile ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
@@ -41,8 +61,10 @@ const HeroSection = ({ data }) => {
           {data.invitationText}
         </div>
 
-        <h1 className="overflow-visible">
-          <CoupleNames brideName={data.brideName} groomName={data.groomName} size="hero" />
+        <h1 className="w-full overflow-visible">
+          <span className="name-light-sweep">
+            <CoupleNames brideName={data.brideName} groomName={data.groomName} size="hero" />
+          </span>
         </h1>
 
         <div className="mx-auto mt-8 flex max-w-xl items-center justify-center gap-4 text-sm tracking-[0.24em] text-ink/60 sm:text-base">

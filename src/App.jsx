@@ -30,17 +30,26 @@ const App = () => {
   const shouldRenderDecorations = hasOpened && isPageVisible && !isMobile;
 
   useEffect(() => {
-    const title = `${weddingData.groomName} & ${weddingData.brideName} | ${formatShortDate(weddingData.weddingDate)}`;
-    document.title = title;
+    const socialTitle = `Thiệp cưới ${weddingData.groomName} & ${weddingData.brideName}`;
+    const description = `Trân trọng kính mời bạn đến chung vui trong ngày cưới của ${weddingData.groomName} & ${weddingData.brideName}.`;
+    const siteUrl = 'https://sangnt0795.github.io/mywedding/';
+    const socialImage = `${siteUrl}images/social-preview.png`;
+    document.title = `${socialTitle} | ${formatShortDate(weddingData.weddingDate)}`;
 
-    const description = document.querySelector('meta[name="description"]');
-    description?.setAttribute('content', weddingData.shortMessage);
+    const setMetaContent = (selector, content) => {
+      const meta = document.querySelector(selector);
+      meta?.setAttribute('content', content);
+    };
 
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    ogTitle?.setAttribute('content', title);
-
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    ogDescription?.setAttribute('content', weddingData.shortMessage);
+    setMetaContent('meta[name="description"]', description);
+    setMetaContent('meta[property="og:title"]', socialTitle);
+    setMetaContent('meta[property="og:description"]', description);
+    setMetaContent('meta[property="og:url"]', siteUrl);
+    setMetaContent('meta[property="og:image"]', socialImage);
+    setMetaContent('meta[property="og:image:secure_url"]', socialImage);
+    setMetaContent('meta[name="twitter:title"]', socialTitle);
+    setMetaContent('meta[name="twitter:description"]', description);
+    setMetaContent('meta[name="twitter:image"]', socialImage);
   }, []);
 
   useEffect(() => {

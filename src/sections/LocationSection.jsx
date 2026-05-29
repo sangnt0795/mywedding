@@ -4,7 +4,7 @@ import { resolveAssetPath } from '../utils/assets';
 
 const LocationSection = ({ location, preferStaticMap = false }) => {
   return (
-    <SectionReveal className="px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
+    <SectionReveal className="px-5 py-12 sm:px-8 lg:px-14 lg:py-16">
       <div className="mx-auto max-w-6xl overflow-hidden rounded-[2.4rem] border border-champagne/80 bg-white/72 shadow-soft">
         <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
           <div className="relative p-7 sm:p-10">
@@ -12,12 +12,12 @@ const LocationSection = ({ location, preferStaticMap = false }) => {
             <div className="relative">
               <p className="text-xs uppercase tracking-[0.32em] text-sageblue">Location</p>
               <h2 className="mt-4 font-display text-5xl leading-none text-ink sm:text-7xl">Địa điểm</h2>
-              <div className="mt-8 flex h-14 w-14 items-center justify-center rounded-full bg-mist/55 text-sageblue">
+              <div className="mt-6 flex h-14 w-14 items-center justify-center rounded-full bg-mist/55 text-sageblue">
                 <FiMapPin className="text-2xl" />
               </div>
-              <h3 className="mt-6 font-display text-4xl leading-tight text-ink sm:text-5xl">{location.name}</h3>
-              <p className="mt-5 text-sm leading-7 text-ink/62 sm:text-base sm:leading-8">{location.address}</p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <h3 className="mt-5 font-display text-4xl leading-tight text-ink sm:text-5xl">{location.name}</h3>
+              <p className="mt-4 text-sm leading-7 text-ink/62 sm:text-base sm:leading-8">{location.address}</p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <a
                   href={location.mapLink}
                   target="_blank"
