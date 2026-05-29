@@ -96,7 +96,7 @@ const App = () => {
         )}
       </AnimatePresence>
 
-      {hasOpened && !isMobile && <BackgroundRoses />}
+      {hasOpened && isPageVisible && <BackgroundRoses />}
 
       <motion.main
         key="main-content"
