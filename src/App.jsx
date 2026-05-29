@@ -111,7 +111,7 @@ const App = () => {
         <CoupleInfoSection couple={weddingData.couple} />
         <AlbumSection album={weddingData.album} />
         <ScheduleSection data={weddingData} />
-        <LocationSection location={weddingData.location} preferStaticMap={isMobile} />
+        <LocationSection location={weddingData.location} />
         <GiftSection bankInfo={weddingData.bankInfo} />
         <Footer data={weddingData} />
       </motion.main>
