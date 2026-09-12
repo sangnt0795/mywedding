@@ -17,6 +17,7 @@
 }
 
 html {
+  position: relative;
   scroll-behavior: smooth;
   background: #eef9fd;
 }
@@ -99,6 +100,12 @@ img {
   100% {
     transform: translateX(78%) skewX(-12deg);
     opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .name-light-sweep::after {
+    display: none;
   }
 }
 

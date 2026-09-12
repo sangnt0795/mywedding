@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi';
-import { resolveAssetPath } from '../utils/assets';
+import ResponsiveImage from './ResponsiveImage';
 
 const ImageLightbox = ({ images, activeIndex, onClose, onChange }) => {
   const activeImage = activeIndex >= 0 ? images[activeIndex] : null;
@@ -9,7 +9,7 @@ const ImageLightbox = ({ images, activeIndex, onClose, onChange }) => {
     <AnimatePresence>
       {activeImage && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 px-4 py-8 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/75 px-4 py-8 sm:backdrop-blur-md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -31,10 +31,14 @@ const ImageLightbox = ({ images, activeIndex, onClose, onChange }) => {
             >
               <FiX />
             </button>
-            <img
-              src={resolveAssetPath(activeImage.src)}
+            <ResponsiveImage
+              src={activeImage.src}
               alt={activeImage.alt}
-              decoding="async"
+              width={activeImage.width}
+              height={activeImage.height}
+              sizes="(min-width: 1024px) 896px, calc(100vw - 56px)"
+              full
+              loading="eager"
               className="max-h-[74vh] w-full rounded-[1.4rem] object-contain"
             />
             <p className="px-2 py-4 text-center text-sm text-ink/65">{activeImage.alt}</p>

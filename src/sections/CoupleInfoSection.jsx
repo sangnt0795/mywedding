@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { FiHeart, FiHome, FiUser } from 'react-icons/fi';
 import SectionReveal from '../components/SectionReveal';
+import ResponsiveImage from '../components/ResponsiveImage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { resolveAssetPath } from '../utils/assets';
 
 const ProfileCard = ({ profile, align = 'left' }) => {
   const isMobile = useMediaQuery('(max-width: 767px)');
@@ -11,6 +11,7 @@ const ProfileCard = ({ profile, align = 'left' }) => {
     <motion.article
       className="relative overflow-hidden rounded-[2.3rem] border border-champagne/80 bg-white/70 p-5 shadow-card sm:p-6"
       initial={isMobile ? false : { opacity: 0, y: 42, rotate: align === 'left' ? -1.5 : 1.5 }}
+      animate={isMobile ? { opacity: 1, y: 0, rotate: 0 } : undefined}
       whileInView={isMobile ? undefined : { opacity: 1, y: 0, rotate: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
@@ -23,11 +24,12 @@ const ProfileCard = ({ profile, align = 'left' }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.55, delay: 0.1 }}
         >
-          <img
-            src={resolveAssetPath(profile.image)}
+          <ResponsiveImage
+            src={profile.image}
             alt={profile.name}
-            loading="lazy"
-            decoding="async"
+            width={profile.imageWidth}
+            height={profile.imageHeight}
+            sizes="(min-width: 1024px) 480px, (min-width: 640px) 44vw, calc(100vw - 80px)"
             className="h-full w-full object-cover sm:h-[420px]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/24 via-transparent to-white/12" />

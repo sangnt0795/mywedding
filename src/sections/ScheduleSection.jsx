@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiCalendar, FiClock, FiExternalLink, FiHeart, FiMapPin } from 'react-icons/fi';
+import { FiCalendar, FiClock, FiExternalLink, FiHeart } from 'react-icons/fi';
 import SectionReveal from '../components/SectionReveal';
 import CoupleNames from '../components/CoupleNames';
 import { useMediaQuery } from '../hooks/useMediaQuery';
@@ -127,6 +127,7 @@ const ScheduleSection = ({ data }) => {
                   <motion.div
                     key={item.key}
                     initial={isMobile ? false : { opacity: 0, y: 12 }}
+                    animate={isMobile ? { opacity: 1, y: 0 } : undefined}
                     whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.35, delay: index * 0.012 }}
@@ -144,32 +145,21 @@ const ScheduleSection = ({ data }) => {
               </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              {data.schedule.map((item) => (
-                <article key={item.label} className="rounded-[1.8rem] border border-white/70 bg-white/70 p-5 shadow-card">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-mist/55 text-sageblue">
-                    <FiClock />
-                  </div>
-                  <p className="mt-5 text-xs uppercase tracking-[0.22em] text-ink/45">{item.label}</p>
-                  <h3 className="mt-1.5 font-display text-4xl text-ink sm:text-5xl">{item.time}</h3>
-                  <p className="mt-3 text-sm leading-6 text-ink/60">{item.note}</p>
-                </article>
-              ))}
-            </div>
-
-            <div className="rounded-[1.8rem] border border-roseblue/35 bg-white/70 p-5 shadow-card">
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-mist/55 text-sageblue">
-                  <FiMapPin />
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-[0.24em] text-ink/45">Thời gian hôn lễ / Time</p>
-                  <p className="mt-2 text-sm leading-7 text-ink/65">
-                    Vào lúc {data.ceremonyTime} {formatWeddingDate(data.weddingDate)} tại {data.location.name}, {data.invitation.venueNote}.
-                  </p>
-                </div>
+            <article className="rounded-[1.8rem] border border-white/70 bg-white/70 p-5 shadow-card">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-mist/55 text-sageblue">
+                <FiClock />
               </div>
-            </div>
+              <div className="mt-5 grid grid-cols-2 divide-x divide-roseblue/35">
+                {data.schedule.map((item) => (
+                  <div key={item.label} className="px-3 first:pl-0 last:pr-0">
+                    <p className="text-xs uppercase tracking-[0.22em] text-ink/45">{item.label}</p>
+                    <h3 className="mt-1.5 font-display text-4xl text-ink sm:text-5xl">{item.time}</h3>
+                    <p className="mt-3 text-sm leading-6 text-ink/60">{item.note}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+
           </div>
         </div>
       </div>

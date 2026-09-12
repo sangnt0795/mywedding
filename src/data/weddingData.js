@@ -35,6 +35,8 @@ export const weddingData = {
       description:
         'Một người điềm tĩnh, ấm áp và luôn tin rằng hạnh phúc được tạo nên từ những điều giản dị mỗi ngày.',
       image: '/images/album/chure.jpg',
+      imageWidth: 5504,
+      imageHeight: 8256,
     },
     bride: {
       label: 'THE BRIDE',
@@ -45,6 +47,8 @@ export const weddingData = {
       description:
         'Một cô gái yêu sắc xanh dịu nhẹ, thích những bông hoa thanh tao và luôn trân trọng từng khoảnh khắc bên người thương.',
       image: '/images/album/codau.jpg',
+      imageWidth: 5322,
+      imageHeight: 7983,
     },
   },
 
@@ -56,38 +60,50 @@ export const weddingData = {
       'Chân thành mời bạn đến chứng kiến và sẻ chia khoảnh khắc hạnh phúc này.',
     ],
     lunarDate: 'Âm lịch: ngày 9 tháng 9 Âm lịch. Ngày Ất Sửu, Tháng Mậu Tuất Năm Bính Ngọ',
-    venueNote: 'Sảnh tiệc Hạnh Phúc',
+    venueNote: 'Sảnh Queen 3 - Tầng 2',
   },
 
   album: [
     {
-      src: '/images/album/album-01.jpg',
-      // alt: 'Ảnh cưới ngoài trời với hoa xanh pastel',
+      src: '/images/album/album-07.jpg',
+      alt: 'Ảnh cưới Tấn Sang và Tường Vy 01',
+      width: 5248,
+      height: 7872,
       span: 'tall',
     },
     {
       src: '/images/album/album-02.jpg',
-      // alt: 'Khoảnh khắc cô dâu chú rể nắm tay',
+      alt: 'Ảnh cưới Tấn Sang và Tường Vy 02',
+      width: 10089,
+      height: 6726,
       span: 'wide',
     },
     {
       src: '/images/album/album-03.jpg',
-      // alt: 'Thiệp cưới và nhẫn cưới phong cách Hàn Quốc',
+      alt: 'Ảnh cưới Tấn Sang và Tường Vy 03',
+      width: 7087,
+      height: 10630,
       span: 'normal',
     },
     {
       src: '/images/album/album-04.jpg',
-      // alt: 'Cặp đôi dưới ánh nắng mềm',
+      alt: 'Ảnh cưới Tấn Sang và Tường Vy 04',
+      width: 7087,
+      height: 10630,
       span: 'normal',
     },
     {
       src: '/images/album/album-05.jpg',
-      // alt: 'Bó hoa cưới xanh hoa hồng nhẹ',
+      alt: 'Ảnh cưới Tấn Sang và Tường Vy 05',
+      width: 7087,
+      height: 10630,
       span: 'tall',
     },
     {
       src: '/images/album/album-06.jpg',
-      // alt: 'Bàn tiệc cưới tone xanh nhạt và trắng ngà',
+      alt: 'Ảnh cưới Tấn Sang và Tường Vy 06',
+      width: 8256,
+      height: 5504,
       span: 'wide',
     },
   ],
@@ -106,18 +122,18 @@ export const weddingData = {
   ],
 
   location: {
-    name: 'The Ivory Garden Hall',
-    address: '12 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh',
-    mapLink: 'https://www.google.com/maps/search/?api=1&query=12%20Nguyen%20Hue%20Ben%20Nghe%20District%201%20Ho%20Chi%20Minh',
-    mapEmbed: 'https://www.google.com/maps?q=12%20Nguyen%20Hue%2C%20Ben%20Nghe%2C%20District%201%2C%20Ho%20Chi%20Minh&output=embed',
+    name: 'Queen Plaza Tân Bình',
+    address: '91B2 Phạm Văn Hai, Phường Tân Sơn Hoà, Thành phố Hồ Chí Minh',
+    mapLink: 'https://www.google.com/maps/search/?api=1&query=Queen%20Plaza%20T%C3%A2n%20B%C3%ACnh%2C%2091B2%20Ph%E1%BA%A1m%20V%C4%83n%20Hai%2C%20Ph%C6%B0%E1%BB%9Dng%20T%C3%A2n%20S%C6%A1n%20Ho%C3%A0%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh',
+    mapEmbed: 'https://www.google.com/maps?q=Queen%20Plaza%20T%C3%A2n%20B%C3%ACnh%2C%2091B2%20Ph%E1%BA%A1m%20V%C4%83n%20Hai%2C%20Ph%C6%B0%E1%BB%9Dng%20T%C3%A2n%20S%C6%A1n%20Ho%C3%A0%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh&output=embed',
     previewImage: '/images/map-preview.svg',
   },
 
   bankInfo: {
-    bankName: 'Vietcombank',
+    bankName: 'VIETCOMBANK',
     accountName: 'NGUYEN TAN SANG',
-    accountNumber: '0123456789',
-    qrImage: '/images/qr/demo-qr.svg',
+    accountNumber: '0261003483640',
+    qrImage: '/images/qr/wedding-qr.png',
   },
 
   musicList: ['/music/song1.mp3', '/music/song2.mp3', '/music/song3.mp3'],

@@ -19,8 +19,8 @@ export default {
         body: ['Be Vietnam Pro', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 24px 80px rgba(52, 92, 112, 0.14)',
-        card: '0 18px 50px rgba(56, 96, 116, 0.11)',
+        soft: '0 20px 64px rgba(52, 92, 112, 0.11)',
+        card: '0 12px 36px rgba(56, 96, 116, 0.08)',
         glow: '0 0 45px rgba(142, 202, 226, 0.42)',
       },
       backgroundImage: {

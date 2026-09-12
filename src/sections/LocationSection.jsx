@@ -2,7 +2,7 @@ import { FiMapPin, FiNavigation, FiExternalLink } from 'react-icons/fi';
 import SectionReveal from '../components/SectionReveal';
 import { resolveAssetPath } from '../utils/assets';
 
-const LocationSection = ({ location, preferStaticMap = false }) => {
+const LocationSection = ({ location }) => {
   return (
     <SectionReveal className="px-5 py-12 sm:px-8 lg:px-14 lg:py-16">
       <div className="mx-auto max-w-6xl overflow-hidden rounded-[2.4rem] border border-champagne/80 bg-white/72 shadow-soft">
@@ -41,7 +41,7 @@ const LocationSection = ({ location, preferStaticMap = false }) => {
           </div>
 
           <div className="min-h-[340px] border-t border-champagne/70 bg-porcelain lg:border-l lg:border-t-0">
-            {location.mapEmbed && !preferStaticMap ? (
+            {location.mapEmbed ? (
               <iframe
                 title={location.name}
                 src={location.mapEmbed}

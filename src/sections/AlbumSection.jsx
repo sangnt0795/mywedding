@@ -3,13 +3,13 @@ import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import SectionReveal from '../components/SectionReveal';
 import ImageLightbox from '../components/ImageLightbox';
+import ResponsiveImage from '../components/ResponsiveImage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { resolveAssetPath } from '../utils/assets';
 
 const spanClass = {
-  tall: 'sm:row-span-2 sm:min-h-[520px]',
-  wide: 'sm:col-span-2 sm:min-h-[300px]',
-  normal: 'sm:min-h-[300px]',
+  tall: 'md:row-span-2 md:min-h-[520px]',
+  wide: 'md:col-span-2 md:min-h-[300px]',
+  normal: 'md:min-h-[300px]',
 };
 
 const gridVariants = {
@@ -32,6 +32,11 @@ const imageVariants = {
   },
 };
 
+const getImageSizes = (span) => {
+  if (span === 'wide') return '(min-width: 1152px) 560px, (min-width: 768px) 50vw, calc(100vw - 40px)';
+  return '(min-width: 1152px) 280px, (min-width: 768px) 25vw, calc(100vw - 40px)';
+};
+
 const AlbumSection = ({ album }) => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const isMobile = useMediaQuery('(max-width: 767px)');
@@ -48,9 +53,10 @@ const AlbumSection = ({ album }) => {
         </div>
 
         <motion.div
-          className="mt-9 grid grid-cols-1 gap-4 sm:auto-rows-[260px] sm:grid-cols-4 sm:gap-5"
-          variants={isMobile ? undefined : gridVariants}
+          className="mt-9 grid grid-cols-1 gap-4 md:auto-rows-[260px] md:grid-cols-4 md:gap-5"
+          variants={gridVariants}
           initial={isMobile ? false : 'hidden'}
+          animate={isMobile ? 'visible' : undefined}
           whileInView={isMobile ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.18 }}
         >
@@ -59,25 +65,24 @@ const AlbumSection = ({ album }) => {
               key={image.src}
               type="button"
               onClick={() => setActiveIndex(index)}
-              variants={isMobile ? undefined : imageVariants}
+              variants={imageVariants}
               whileHover={isMobile ? undefined : { y: -4 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className={clsx(
-                'group relative overflow-hidden rounded-[1.8rem] border border-white/70 bg-white/50 text-left shadow-card transition-shadow duration-500 ease-out hover:shadow-soft',
+                'group relative overflow-hidden rounded-[1.6rem] border border-white/80 bg-white text-left shadow-card transition-shadow duration-500 ease-out hover:shadow-soft md:rounded-[1.8rem]',
                 spanClass[image.span] || spanClass.normal,
               )}
             >
-              <img
-                src={resolveAssetPath(image.src)}
+              <ResponsiveImage
+                src={image.src}
                 alt={image.alt}
-                loading="lazy"
-                decoding="async"
-                className="h-auto w-full object-contain transition duration-700 ease-out sm:h-full sm:object-cover sm:group-hover:scale-[1.035]"
+                width={image.width}
+                height={image.height}
+                sizes={getImageSizes(image.span)}
+                loading="eager"
+                className="h-auto w-full object-contain transition duration-700 ease-out md:h-full md:object-cover md:group-hover:scale-[1.035]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/34 via-transparent to-white/16 opacity-[0.78] transition duration-500 ease-out group-hover:opacity-90" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4 transition duration-500 ease-out group-hover:-translate-y-1">
-                <p className="text-sm leading-6 text-white/92 drop-shadow">{image.alt}</p>
-              </div>
+              <div className="absolute inset-0 hidden bg-gradient-to-t from-ink/24 via-transparent to-white/10 opacity-70 transition duration-500 ease-out group-hover:opacity-90 md:block" />
             </motion.button>
           ))}
         </motion.div>

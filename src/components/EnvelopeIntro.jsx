@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiHeart } from 'react-icons/fi';
 import CoupleNames from './CoupleNames';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { resolveAssetPath } from '../utils/assets';
 import { formatShortDate } from '../utils/date';
 
 const EnvelopeIntro = ({ data, onOpenStart, onOpenComplete }) => {
   const [isOpening, setIsOpening] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
   const handleOpen = () => {
     if (isOpening) return;
@@ -35,7 +37,7 @@ const EnvelopeIntro = ({ data, onOpenStart, onOpenComplete }) => {
       <motion.div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${resolveAssetPath(data.coverImage)})` }}
-        animate={{ scale: isOpening ? 1.08 : 1.02 }}
+        animate={{ scale: isOpening ? 1.06 : isMobile ? 1 : 1.02 }}
         transition={{ duration: 2.2, ease: 'easeOut' }}
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(251,254,255,0.7),rgba(238,249,253,0.9))]" />
@@ -51,16 +53,16 @@ const EnvelopeIntro = ({ data, onOpenStart, onOpenComplete }) => {
         onKeyDown={(event) => {
           if (event.key === 'Enter' || event.key === ' ') handleOpen();
         }}
-        animate={isOpening ? { y: -10, scale: 0.98 } : { y: [0, -8, 0] }}
-        transition={isOpening ? { duration: 0.7 } : { duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        animate={isOpening ? { y: -10, scale: 0.98 } : isMobile ? { y: 0 } : { y: [0, -8, 0] }}
+        transition={isOpening ? { duration: 0.7 } : isMobile ? { duration: 0 } : { duration: 4, repeat: Infinity, ease: 'easeInOut' }}
       >
         <motion.div
           className="absolute -inset-5 rounded-[2.2rem] bg-white/35 blur-2xl sm:-inset-7"
-          animate={{ opacity: isOpening ? 0.8 : [0.45, 0.75, 0.45] }}
-          transition={{ duration: 3, repeat: isOpening ? 0 : Infinity }}
+          animate={{ opacity: isOpening ? 0.8 : isMobile ? 0.55 : [0.45, 0.75, 0.45] }}
+          transition={{ duration: isMobile ? 0 : 3, repeat: isOpening || isMobile ? 0 : Infinity }}
         />
 
-        <div className="relative min-h-[420px] rounded-[2rem] border border-white/80 bg-white/42 p-4 shadow-soft backdrop-blur-md sm:min-h-[500px] sm:p-6">
+        <div className="relative min-h-[420px] rounded-[2rem] border border-white/80 bg-white/70 p-4 shadow-card sm:min-h-[500px] sm:bg-white/42 sm:p-6 sm:shadow-soft sm:backdrop-blur-md">
           <div className="absolute left-8 top-7 h-20 w-20 rounded-full border border-roseblue/40" />
           <div className="absolute right-8 top-10 h-14 w-14 rounded-full bg-mist/40 blur-xl" />
           <div className="absolute bottom-8 left-10 h-16 w-16 rounded-full bg-blush/40 blur-xl" />
@@ -103,9 +105,11 @@ const EnvelopeIntro = ({ data, onOpenStart, onOpenComplete }) => {
               animate={
                 isOpening
                   ? { x: '-50%', y: '-50%', scale: 0.86, opacity: 0 }
-                  : { x: '-50%', y: '-50%', scale: [1, 1.06, 1] }
+                  : isMobile
+                    ? { x: '-50%', y: '-50%', scale: 1 }
+                    : { x: '-50%', y: '-50%', scale: [1, 1.06, 1] }
               }
-              transition={{ duration: isOpening ? 0.45 : 2.4, repeat: isOpening ? 0 : Infinity }}
+              transition={{ duration: isOpening ? 0.45 : isMobile ? 0 : 2.4, repeat: isOpening || isMobile ? 0 : Infinity }}
             >
               <FiHeart className="text-2xl" />
             </motion.div>
@@ -113,10 +117,10 @@ const EnvelopeIntro = ({ data, onOpenStart, onOpenComplete }) => {
 
           <motion.div
             className="absolute bottom-8 left-1/2 z-[60] text-center"
-            animate={isOpening ? { x: '-50%', opacity: 0, y: 8 } : { x: '-50%', opacity: [0.55, 1, 0.55], y: [0, -3, 0] }}
-            transition={{ duration: 2.2, repeat: isOpening ? 0 : Infinity }}
+            animate={isOpening ? { x: '-50%', opacity: 0, y: 8 } : isMobile ? { x: '-50%', opacity: 0.85, y: 0 } : { x: '-50%', opacity: [0.55, 1, 0.55], y: [0, -3, 0] }}
+            transition={{ duration: isMobile ? 0 : 2.2, repeat: isOpening || isMobile ? 0 : Infinity }}
           >
-            <p className="rounded-full border border-white/70 bg-white/55 px-4 py-2 text-xs tracking-[0.22em] text-ink/70 shadow-sm backdrop-blur">
+            <p className="rounded-full border border-white/70 bg-white/75 px-4 py-2 text-xs tracking-[0.22em] text-ink/70 shadow-sm sm:bg-white/55 sm:backdrop-blur">
               Chạm để mở thiệp
             </p>
           </motion.div>

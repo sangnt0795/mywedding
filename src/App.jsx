@@ -30,10 +30,10 @@ const App = () => {
   const shouldRenderDecorations = hasOpened && isPageVisible && !isMobile;
 
   useEffect(() => {
-    const socialTitle = `Thiệp cưới ${weddingData.groomName} & ${weddingData.brideName}`;
-    const description = `Trân trọng kính mời bạn đến chung vui trong ngày cưới của ${weddingData.groomName} & ${weddingData.brideName}.`;
+    const socialTitle = `${weddingData.groomName} & ${weddingData.brideName}`;
+    const description = 'Trân trọng kính mời bạn đến chung vui trong ngày cưới của chúng mình.';
     const siteUrl = 'https://sangnt0795.github.io/mywedding/';
-    const socialImage = `${siteUrl}images/social-preview.png`;
+    const socialImage = `${siteUrl}images/social-preview-zalo-v2.png`;
     document.title = `${socialTitle} | ${formatShortDate(weddingData.weddingDate)}`;
 
     const setMetaContent = (selector, content) => {
@@ -53,19 +53,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    preloadImages(
-      [
-        weddingData.coverImage,
-        weddingData.heroImage,
-        '/images/blue-rose.webp',
-        weddingData.couple.groom.image,
-        weddingData.couple.bride.image,
-        weddingData.location.previewImage,
-        weddingData.bankInfo.qrImage,
-        ...weddingData.album.map((image) => image.src),
-      ],
-      { concurrency: 2 },
-    );
+    preloadImages([weddingData.coverImage, weddingData.heroImage], { concurrency: 2 });
   }, []);
 
   useEffect(() => {
@@ -105,7 +93,7 @@ const App = () => {
         )}
       </AnimatePresence>
 
-      {hasOpened && isPageVisible && <BackgroundRoses />}
+      {shouldRenderDecorations && <BackgroundRoses />}
 
       <motion.main
         key="main-content"

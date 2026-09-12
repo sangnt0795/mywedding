@@ -25,7 +25,7 @@ const HeroSection = ({ data }) => {
   const backgroundY = useTransform(scrollYProgress, [0, 1], [0, 72]);
 
   return (
-    <section ref={sectionRef} className="relative flex min-h-[82svh] items-start overflow-hidden px-5 pb-10 pt-16 text-ink sm:min-h-[92svh] sm:px-8 sm:pb-16 sm:pt-20 lg:px-14">
+    <section ref={sectionRef} className="relative flex items-start overflow-hidden px-5 pb-10 pt-16 text-ink sm:px-8 sm:pb-16 sm:pt-20 md:min-h-[84svh] lg:px-14">
       <motion.div
         className="absolute inset-x-0 -bottom-16 -top-16"
         style={{ y: isMobile ? 0 : backgroundY }}

@@ -32,9 +32,11 @@ const GiftSection = ({ bankInfo }) => {
               <img
                 src={resolveAssetPath(bankInfo.qrImage)}
                 alt="QR mừng cưới"
+                width="521"
+                height="528"
                 loading="lazy"
                 decoding="async"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-ink/0 text-white opacity-0 transition group-hover:bg-ink/28 group-hover:opacity-100">
                 <FiMaximize2 className="text-2xl" />
@@ -43,21 +45,14 @@ const GiftSection = ({ bankInfo }) => {
           </button>
         </div>
 
-        <div className="mt-7 grid gap-4 rounded-[1.8rem] bg-porcelain p-5 text-sm text-ink/70 lg:grid-cols-[0.85fr_1fr_auto] lg:items-center">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <p className="shrink-0 text-[0.65rem] uppercase tracking-[0.22em] text-ink/42">Ngân hàng</p>
-            <p className="font-medium text-ink">{bankInfo.bankName}</p>
-          </div>
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <p className="shrink-0 text-[0.65rem] uppercase tracking-[0.22em] text-ink/42">Chủ tài khoản</p>
-            <p className="font-medium text-ink">{bankInfo.accountName}</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 lg:justify-end">
-            <p className="shrink-0 text-[0.65rem] uppercase tracking-[0.22em] text-ink/42">Số tài khoản</p>
-            <div className="grid grid-cols-[1fr_auto] items-center gap-2 rounded-full border border-roseblue/35 bg-white/60 py-1.5 pl-4 pr-1.5">
-              <p className="min-w-0 text-center font-semibold tracking-[0.08em] text-ink sm:text-left">{bankInfo.accountNumber}</p>
-              <CopyButton value={bankInfo.accountNumber} label="Sao chép" />
-            </div>
+        <div className="mt-7 flex items-center gap-3 overflow-x-auto whitespace-nowrap rounded-[1.8rem] bg-porcelain p-5 text-sm text-ink/70 sm:gap-4 sm:overflow-visible">
+          <p className="font-medium text-ink">{bankInfo.bankName}</p>
+          <span aria-hidden="true" className="text-roseblue">•</span>
+          <p className="font-medium text-ink">{bankInfo.accountName}</p>
+          <span aria-hidden="true" className="text-roseblue">•</span>
+          <div className="ml-auto grid shrink-0 grid-cols-[1fr_auto] items-center gap-2 rounded-full border border-roseblue/35 bg-white/60 py-1.5 pl-4 pr-1.5">
+            <p className="font-semibold tracking-[0.08em] text-ink">{bankInfo.accountNumber}</p>
+            <CopyButton value={bankInfo.accountNumber} label="Sao chép" />
           </div>
         </div>
       </div>
@@ -65,7 +60,7 @@ const GiftSection = ({ bankInfo }) => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 px-5 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/75 px-5 sm:backdrop-blur-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -89,8 +84,10 @@ const GiftSection = ({ bankInfo }) => {
               <img
                 src={resolveAssetPath(bankInfo.qrImage)}
                 alt="QR mừng cưới phóng to"
+                width="521"
+                height="528"
                 decoding="async"
-                className="w-full rounded-[1.4rem] bg-white"
+                className="w-full rounded-[1.4rem] bg-white object-contain"
               />
               <p className="mt-4 text-center text-sm text-ink/60">{bankInfo.bankName} · {bankInfo.accountName}</p>
             </motion.div>
