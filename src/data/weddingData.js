@@ -54,6 +54,12 @@ export const weddingData = {
 
   invitation: {
     title: 'Invitation',
+    image: {
+      src: '/images/album/album-01.jpg',
+      alt: 'Ảnh cưới Tấn Sang và Tường Vy',
+      width: 7087,
+      height: 10630,
+    },
     lines: [
       'Chúng mình quyết định mở ra chương mới của cuộc đời.',
       'Để tình yêu tiếp tục với danh nghĩa vợ chồng.',

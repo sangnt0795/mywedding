@@ -21,10 +21,10 @@ const InvitationDialogSection = ({ data }) => {
         >
           <div className="absolute -left-16 -top-16 h-44 w-44 rounded-full bg-mist/45 blur-3xl" />
           <ResponsiveImage
-            src={data.album[0].src}
-            alt={data.album[0].alt}
-            width={data.album[0].width}
-            height={data.album[0].height}
+            src={data.invitation.image.src}
+            alt={data.invitation.image.alt}
+            width={data.invitation.image.width}
+            height={data.invitation.image.height}
             sizes="(min-width: 1024px) 520px, calc(100vw - 64px)"
             className="relative h-[430px] w-full rounded-[2rem] object-cover sm:h-[560px]"
           />
