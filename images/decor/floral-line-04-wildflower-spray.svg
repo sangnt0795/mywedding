@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 620" role="img" aria-labelledby="title">
+  <title id="title">Wildflower spray line art</title>
+  <g fill="none" stroke="#7fa6b8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M246 574C258 438 257 300 230 115" stroke-width="2" opacity=".55"/>
+    <path d="M247 444C177 386 132 322 112 252" stroke-width="1.6" opacity=".42"/>
+    <path d="M252 410c64-45 105-100 123-165" stroke-width="1.6" opacity=".42"/>
+    <path d="M242 314c-54-43-87-92-98-148" stroke-width="1.5" opacity=".38"/>
+    <path d="M237 208c47-34 77-75 88-124" stroke-width="1.5" opacity=".38"/>
+    <path d="M112 252c-25-21-55-28-91-20 25 29 55 35 91 20Z" stroke-width="1.8" opacity=".48"/>
+    <path d="M164 333c-34-8-64 0-91 26 36 16 66 8 91-26Z" stroke-width="1.8" opacity=".45"/>
+    <path d="M374 245c31-13 50-36 58-69-34 6-54 29-58 69Z" stroke-width="1.8" opacity=".45"/>
+    <path d="M323 331c31 9 58 2 82-21-33-16-60-9-82 21Z" stroke-width="1.8" opacity=".42"/>
+    <path d="M144 166c-20-24-46-35-78-32 17 31 43 42 78 32Z" stroke-width="1.7" opacity=".4"/>
+    <path d="M325 84c24-17 38-39 42-67-29 7-43 29-42 67Z" stroke-width="1.7" opacity=".4"/>
+    <path d="M221 96c-14-30-6-58 22-78 19 26 12 54-22 78Z" stroke-width="1.7" opacity=".43"/>
+    <path d="M202 88c-19-14-42-16-68-5 19 20 42 22 68 5Z" stroke-width="1.6" opacity=".4"/>
+    <path d="M238 80c13-17 30-25 52-24-10 23-27 31-52 24Z" stroke-width="1.6" opacity=".39"/>
+    <circle cx="229" cy="113" r="7" stroke-width="1.5" opacity=".42"/>
+    <circle cx="112" cy="252" r="5" stroke-width="1.4" opacity=".34"/>
+    <circle cx="374" cy="245" r="5" stroke-width="1.4" opacity=".34"/>
+  </g>
+</svg>

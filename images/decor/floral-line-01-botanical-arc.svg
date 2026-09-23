@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-labelledby="title">
+  <title id="title">Botanical arc line art</title>
+  <g fill="none" stroke="#7fa6b8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 292C184 204 314 145 650 68" stroke-width="2.1" opacity=".6"/>
+    <path d="M178 220c-24-18-45-19-66-5 18 19 41 23 66 5Z" stroke-width="1.8" opacity=".52"/>
+    <path d="M226 195c-4-35 9-60 34-76 9 31-1 57-34 76Z" stroke-width="1.8" opacity=".52"/>
+    <path d="M318 158c-27-17-54-17-79 0 21 21 48 22 79 0Z" stroke-width="1.8" opacity=".5"/>
+    <path d="M382 137c-1-34 14-57 44-68 5 31-9 54-44 68Z" stroke-width="1.8" opacity=".5"/>
+    <path d="M491 105c-27-11-52-8-74 10 23 16 48 13 74-10Z" stroke-width="1.8" opacity=".48"/>
+    <path d="M568 85c4-30 21-48 50-56 1 29-17 47-50 56Z" stroke-width="1.8" opacity=".48"/>
+    <path d="M116 252c20-30 46-46 80-50" stroke-width="1.2" opacity=".38"/>
+    <path d="M250 181c20-33 50-54 90-64" stroke-width="1.2" opacity=".35"/>
+    <path d="M431 120c28-26 62-43 102-51" stroke-width="1.2" opacity=".33"/>
+    <path d="M641 66c12-11 26-17 42-18" stroke-width="1.2" opacity=".3"/>
+    <circle cx="89" cy="276" r="5.5" stroke-width="1.5" opacity=".42"/>
+    <circle cx="346" cy="151" r="4.5" stroke-width="1.5" opacity=".38"/>
+    <circle cx="535" cy="92" r="4" stroke-width="1.5" opacity=".34"/>
+  </g>
+</svg>

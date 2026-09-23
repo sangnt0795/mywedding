@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 180" role="img" aria-labelledby="title">
+  <title id="title">Leaf divider line art</title>
+  <g fill="none" stroke="#7fa6b8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M74 92h222c48 0 67-24 84-50 17 26 36 50 84 50h222" stroke-width="2" opacity=".52"/>
+    <path d="M380 42c-17 31-17 65 0 96 17-31 17-65 0-96Z" stroke-width="1.7" opacity=".46"/>
+    <path d="M328 72c-30-17-60-17-90 0 28 22 58 22 90 0Z" stroke-width="1.7" opacity=".43"/>
+    <path d="M432 72c30-17 60-17 90 0-28 22-58 22-90 0Z" stroke-width="1.7" opacity=".43"/>
+    <path d="M266 92c-24 16-38 38-41 67 31-8 45-31 41-67Z" stroke-width="1.7" opacity=".39"/>
+    <path d="M494 92c24 16 38 38 41 67-31-8-45-31-41-67Z" stroke-width="1.7" opacity=".39"/>
+    <path d="M194 92c-26-11-51-8-75 10 26 16 51 13 75-10Z" stroke-width="1.6" opacity=".36"/>
+    <path d="M566 92c26-11 51-8 75 10-26 16-51 13-75-10Z" stroke-width="1.6" opacity=".36"/>
+    <circle cx="380" cy="92" r="6" stroke-width="1.6" opacity=".42"/>
+    <circle cx="304" cy="92" r="3.8" stroke-width="1.3" opacity=".34"/>
+    <circle cx="456" cy="92" r="3.8" stroke-width="1.3" opacity=".34"/>
+  </g>
+</svg>
