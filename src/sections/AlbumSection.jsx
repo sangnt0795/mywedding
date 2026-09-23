@@ -79,7 +79,7 @@ const AlbumSection = ({ album }) => {
                 width={image.width}
                 height={image.height}
                 sizes={getImageSizes(image.span)}
-                loading="eager"
+                loading="lazy"
                 className="h-auto w-full object-contain transition duration-700 ease-out md:h-full md:object-cover md:group-hover:scale-[1.035]"
               />
               <div className="absolute inset-0 hidden bg-gradient-to-t from-ink/24 via-transparent to-white/10 opacity-70 transition duration-500 ease-out group-hover:opacity-90 md:block" />

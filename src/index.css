@@ -103,6 +103,49 @@ img {
   }
 }
 
+.falling-petal {
+  animation-name: petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.floating-ornament {
+  animation: ornament-float 5.5s ease-in-out infinite;
+  animation-fill-mode: both;
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate3d(0, -12vh, 0) rotate(var(--petal-rotate-start));
+  }
+
+  33% {
+    transform: translate3d(var(--petal-drift-out), 29vh, 0) rotate(var(--petal-rotate-mid));
+  }
+
+  66% {
+    transform: translate3d(var(--petal-drift-back), 70vh, 0) rotate(var(--petal-rotate-mid));
+  }
+
+  100% {
+    transform: translate3d(var(--petal-drift-end), 112vh, 0) rotate(var(--petal-rotate-end));
+  }
+}
+
+@keyframes ornament-float {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    opacity: 0.58;
+    transform: translate3d(8px, -18px, 0);
+  }
+}
+
 @media (max-width: 767px) {
   .name-light-sweep::after {
     display: none;

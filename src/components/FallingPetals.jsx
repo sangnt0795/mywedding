@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { resolveAssetPath } from '../utils/assets';
 
 const ROSE_IMAGE = '/images/blue-rose.webp';
@@ -22,27 +21,23 @@ const FallingPetals = () => {
         const startRotate = index % 2 === 0 ? -18 : 22;
 
         return (
-          <motion.span
+          <span
             key={`${flower.left}-${flower.delay}`}
-            className="absolute -top-10 block will-change-transform"
+            className="falling-petal absolute -top-10 block will-change-transform"
             style={{
               left: flower.left,
               width: flower.size,
               height: flower.size,
               opacity: flower.opacity,
               transformOrigin: '50% 60%',
-            }}
-            initial={{ y: '-12vh', x: 0, rotate: startRotate }}
-            animate={{
-              y: '112vh',
-              x: [0, flower.drift, flower.drift * -0.45, flower.drift * 0.2],
-              rotate: [startRotate, startRotate + flower.rotate * 0.6, startRotate + flower.rotate],
-            }}
-            transition={{
-              duration: flower.duration,
-              delay: flower.delay,
-              repeat: Infinity,
-              ease: 'linear',
+              '--petal-drift-out': `${flower.drift}px`,
+              '--petal-drift-back': `${flower.drift * -0.45}px`,
+              '--petal-drift-end': `${flower.drift * 0.2}px`,
+              '--petal-rotate-start': `${startRotate}deg`,
+              '--petal-rotate-mid': `${startRotate + flower.rotate * 0.6}deg`,
+              '--petal-rotate-end': `${startRotate + flower.rotate}deg`,
+              animationDuration: `${flower.duration}s`,
+              animationDelay: `${flower.delay}s`,
             }}
           >
             <img
@@ -52,7 +47,7 @@ const FallingPetals = () => {
               draggable="false"
               decoding="async"
             />
-          </motion.span>
+          </span>
         );
       })}
     </div>

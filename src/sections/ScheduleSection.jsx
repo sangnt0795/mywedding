@@ -31,9 +31,21 @@ const CountdownItem = ({ value, label }) => (
   </div>
 );
 
+const ScheduleCountdown = ({ date, time }) => {
+  const countdown = useCountdown(date, time);
+
+  return (
+    <div className="mt-4 grid grid-cols-4 gap-2">
+      <CountdownItem value={countdown.days} label="Ngày" />
+      <CountdownItem value={countdown.hours} label="Giờ" />
+      <CountdownItem value={countdown.minutes} label="Phút" />
+      <CountdownItem value={countdown.seconds} label="Giây" />
+    </div>
+  );
+};
+
 const ScheduleSection = ({ data }) => {
   const isMobile = useMediaQuery('(max-width: 767px)');
-  const countdown = useCountdown(data.weddingDate, data.ceremonyTime);
   const weddingDate = getWeddingDateTime(data.weddingDate);
   const calendarDays = buildCalendarDays(data.weddingDate);
   const calendarUrl = createGoogleCalendarUrl({
@@ -88,12 +100,7 @@ const ScheduleSection = ({ data }) => {
                 <p className="mt-3 text-xs leading-5 text-ink/52">{data.invitation.lunarDate}</p>
               </div>
 
-              <div className="mt-4 grid grid-cols-4 gap-2">
-                <CountdownItem value={countdown.days} label="Ngày" />
-                <CountdownItem value={countdown.hours} label="Giờ" />
-                <CountdownItem value={countdown.minutes} label="Phút" />
-                <CountdownItem value={countdown.seconds} label="Giây" />
-              </div>
+              <ScheduleCountdown date={data.weddingDate} time={data.ceremonyTime} />
 
               <a
                 href={calendarUrl}

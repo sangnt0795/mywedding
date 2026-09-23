@@ -45,7 +45,7 @@ const LocationSection = ({ location }) => {
               <iframe
                 title={location.name}
                 src={location.mapEmbed}
-                loading="eager"
+                loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
                 className="h-full min-h-[340px] w-full"

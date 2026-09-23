@@ -14,30 +14,63 @@ const CountdownItem = ({ value, label }) => (
   </div>
 );
 
-const HeroSection = ({ data }) => {
-  const sectionRef = useRef(null);
-  const isMobile = useMediaQuery('(max-width: 767px)');
-  const countdown = useCountdown(data.weddingDate, data.ceremonyTime);
+const HeroCountdown = ({ date, time }) => {
+  const countdown = useCountdown(date, time);
+
+  return (
+    <>
+      <div className="mx-auto mt-10 grid max-w-2xl grid-cols-4 gap-2 sm:gap-4">
+        <CountdownItem value={countdown.days} label="Ngày" />
+        <CountdownItem value={countdown.hours} label="Giờ" />
+        <CountdownItem value={countdown.minutes} label="Phút" />
+        <CountdownItem value={countdown.seconds} label="Giây" />
+      </div>
+
+      <div className="mt-9 inline-flex items-center gap-3 rounded-full bg-white/50 px-5 py-3 text-sm text-ink/60 shadow-sm backdrop-blur">
+        <FiCalendar className="text-sageblue" />
+        Còn {countdown.days} ngày nữa đến lễ cưới
+      </div>
+    </>
+  );
+};
+
+const DesktopHeroBackground = ({ image, sectionRef }) => {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
+    layoutEffect: false,
   });
   const backgroundY = useTransform(scrollYProgress, [0, 1], [0, 72]);
 
   return (
-    <section ref={sectionRef} className="relative flex items-start overflow-hidden px-5 pb-10 pt-16 text-ink sm:px-8 sm:pb-16 sm:pt-20 md:min-h-[84svh] lg:px-14">
+    <motion.div className="absolute inset-x-0 -bottom-16 -top-16" style={{ y: backgroundY }}>
       <motion.div
-        className="absolute inset-x-0 -bottom-16 -top-16"
-        style={{ y: isMobile ? 0 : backgroundY }}
-      >
-        <motion.div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${resolveAssetPath(data.heroImage)})` }}
-          initial={isMobile ? false : { scale: 1.06 }}
-          animate={isMobile ? undefined : { scale: 1.14 }}
-          transition={isMobile ? undefined : { duration: 18, ease: 'easeOut' }}
-        />
-      </motion.div>
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${resolveAssetPath(image)})` }}
+        initial={{ scale: 1.06 }}
+        animate={{ scale: 1.14 }}
+        transition={{ duration: 18, ease: 'easeOut' }}
+      />
+    </motion.div>
+  );
+};
+
+const HeroSection = ({ data }) => {
+  const sectionRef = useRef(null);
+  const isMobile = useMediaQuery('(max-width: 767px)');
+
+  return (
+    <section ref={sectionRef} className="relative flex items-start overflow-hidden px-5 pb-10 pt-16 text-ink sm:px-8 sm:pb-16 sm:pt-20 md:min-h-[84svh] lg:px-14">
+      {isMobile ? (
+        <div className="absolute inset-x-0 -bottom-16 -top-16">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${resolveAssetPath(data.heroImage)})` }}
+          />
+        </div>
+      ) : (
+        <DesktopHeroBackground image={data.heroImage} sectionRef={sectionRef} />
+      )}
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(251,254,255,0.76),rgba(238,249,253,0.92)_58%,rgba(251,254,255,0.98))]" />
       <div className="absolute left-0 top-0 h-64 w-64 rounded-full bg-mist/45 blur-3xl" />
       <div className="absolute bottom-12 right-0 h-72 w-72 rounded-full bg-blush/55 blur-3xl" />
@@ -75,17 +108,7 @@ const HeroSection = ({ data }) => {
 
         <p className="mx-auto mt-7 max-w-2xl text-sm leading-7 text-ink/65 sm:text-base sm:leading-8">{data.shortMessage}</p>
 
-        <div className="mx-auto mt-10 grid max-w-2xl grid-cols-4 gap-2 sm:gap-4">
-          <CountdownItem value={countdown.days} label="Ngày" />
-          <CountdownItem value={countdown.hours} label="Giờ" />
-          <CountdownItem value={countdown.minutes} label="Phút" />
-          <CountdownItem value={countdown.seconds} label="Giây" />
-        </div>
-
-        <div className="mt-9 inline-flex items-center gap-3 rounded-full bg-white/50 px-5 py-3 text-sm text-ink/60 shadow-sm backdrop-blur">
-          <FiCalendar className="text-sageblue" />
-          Còn {countdown.days} ngày nữa đến lễ cưới
-        </div>
+        <HeroCountdown date={data.weddingDate} time={data.ceremonyTime} />
       </motion.div>
     </section>
   );

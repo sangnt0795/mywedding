@@ -23,6 +23,7 @@ import { formatShortDate } from './utils/date';
 const App = () => {
   const [hasOpened, setHasOpened] = useState(false);
   const [isIntroVisible, setIsIntroVisible] = useState(true);
+  const [hasIntroExited, setHasIntroExited] = useState(false);
   const wasHiddenAfterOpenRef = useRef(false);
   const isMobile = useMediaQuery('(max-width: 767px)');
   const isPageVisible = usePageVisibility();
@@ -57,6 +58,20 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    if (hasIntroExited) return undefined;
+
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBodyOverflow;
+    };
+  }, [hasIntroExited]);
+
+  useEffect(() => {
     if (!hasOpened) return;
 
     if (!isPageVisible) {
@@ -82,7 +97,7 @@ const App = () => {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-paper text-ink">
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" onExitComplete={() => setHasIntroExited(true)}>
         {isIntroVisible && (
           <EnvelopeIntro
             key="envelope"
